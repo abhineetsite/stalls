@@ -1,0 +1,281 @@
+<!-- FILEPATH: /Users/abhineetswain/Documents/GitHub/stalls/src/main/resources/templates/employeePortal/login.html -->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DesiCabana Employee Portal</title>
+        
+        <style>
+            body {
+                background-image: url("/img/loginBackground.jpeg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }              
+
+            .container {                              
+                margin: auto;
+                width: 60%;
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px #888888;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            h1 {
+                text-align: center;
+                color: #ff8c00;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: none;
+                border-bottom: 1px solid #ccc;
+                border-radius: 0;
+                box-sizing: border-box;
+                font-size: 16px;
+                color: #333;
+            }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                outline: none;
+                border-bottom: 2px solid #ff8c00;
+            }
+
+            button {
+                background-color: #ff8c00;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+                font-size: 16px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #ffad33;
+            }
+
+            .cancelbtn {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #f44336;
+            }
+
+            .imgcontainer {
+                text-align: center;
+                margin: 24px 0 12px 0;
+            }
+
+            img.avatar {
+                width: 40%;
+                border-radius: 50%;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            span.psw {
+                float: right;
+                padding-top: 16px;
+            }
+
+            .form-control:focus {
+                box-shadow: none;
+            }
+
+            .form-control::-webkit-input-placeholder {
+                color: #999;
+            }
+
+            .form-control::-moz-placeholder {
+                color: #999;
+            }
+
+            .form-control:-ms-input-placeholder {
+                color: #999;
+            }
+
+            .form-control::-ms-input-placeholder {
+                color: #999;
+            }
+
+            .form-control::placeholder {
+                color: #999;
+            }
+
+            .form-control:focus::-webkit-input-placeholder {
+                color: #999;
+            }
+
+            .form-control:focus::-moz-placeholder {
+                color: #999;
+            }
+
+            .form-control:focus:-ms-input-placeholder {
+                color: #999;
+            }
+
+            .form-control:focus::-ms-input-placeholder {
+                color: #999;
+            }
+
+            .form-control:focus::placeholder {
+                color: #999;
+            }
+
+            .input-group-text {
+                background-color: #fff;
+                border: none;
+                border-radius: 0;
+                color: #333;
+            }
+
+            .input-group-text i {
+                font-size: 20px;
+            }
+
+            .input-group-text:focus {
+                box-shadow: none;
+            }
+
+            .input-group-text:focus i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:focus-within {
+                box-shadow: none;
+            }
+
+            .input-group-text:focus-within i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:hover {
+                background-color: #fff;
+            }
+
+            .input-group-text:hover i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:active {
+                background-color: #fff;
+            }
+
+            .input-group-text:active i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:focus-within {
+                box-shadow: none;
+            }
+
+            .input-group-text:focus-within i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:focus-within:hover {
+                background-color: #fff;
+            }
+
+            .input-group-text:focus-within:hover i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:focus-within:active {
+                background-color: #fff;
+            }
+
+            .input-group-text:focus-within:active i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:focus-within:focus {
+                box-shadow: none;
+            }
+
+            .input-group-text:focus-within:focus i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:focus-within:focus:hover {
+                background-color: #fff;
+            }
+
+            .input-group-text:focus-within:focus:hover i {
+                color: #ff8c00;
+            }
+
+            .input-group-text:focus-within:focus:active {
+                background-color: #fff;
+            }
+
+            .input-group-text:focus-within:focus:active i {
+                color: #ff8c00;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="imgcontainer">
+                <img src="/img/logo.png" alt="Logo"style="width: 200px; height: 200px;" >
+            </div>
+            <div class="row justify-content-center">
+            
+
+                <div class="col-md-6 col-lg-5">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h1 class="text-center mb-4">Employee Login</h1>
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Enter Username" name="uname" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" placeholder="Enter Password" name="psw" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="remember" name="remember" checked />
+                                        <label class="custom-control-label" for="remember">Remember me</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-block">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://kit.fontawesome.com/8d0d3b0c8d.js" crossorigin="anonymous"></script>
+    </body>
+</html>
