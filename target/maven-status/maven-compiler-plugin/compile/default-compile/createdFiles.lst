@@ -1,4 +1,6 @@
+com/desicabana/stalls/repository/EmployeeRepository.class
 com/desicabana/stalls/controller/HomeController.class
+com/desicabana/stalls/model/Employee.class
 com/desicabana/stalls/controller/Reverse.class
 com/desicabana/stalls/controller/EmployeeRegistrationController.class
 com/desicabana/stalls/StallsApplication.class
