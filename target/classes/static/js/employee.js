@@ -8,7 +8,7 @@ document.getElementById('employeeForm').addEventListener('submit', function(even
         hireDate: document.getElementById('hireDate').value
     };
 
-    fetch('/api/employee', {
+    fetch('/api/employee/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
