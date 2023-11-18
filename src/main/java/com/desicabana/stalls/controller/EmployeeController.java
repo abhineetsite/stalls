@@ -51,12 +51,15 @@ public class EmployeeController {
     
     @PostMapping("/upload")
     public ResponseEntity<FileUploadResponse> uploadFile(@RequestParam("file") MultipartFile file) {
+
         FileUploadResponse response = new FileUploadResponse();
-        //String filePath = employeeService.storeFile(file);
+        //File service call logic needs to be added here
         try{
-        response.setStatus("success");
-        response.setMessage("File uploaded successfully");
-        return ResponseEntity.ok(response);
+            String filePath = employeeService.storeFile(file); // or fileService.storeFile(file);
+            response.setFilePath(filePath);
+            response.setStatus("success");
+            response.setMessage("File uploaded successfully");
+            return ResponseEntity.ok(response);
         }catch(Exception e){
             response.setStatus("failure");
             response.setMessage("Could not upload the file: " + e.getMessage());

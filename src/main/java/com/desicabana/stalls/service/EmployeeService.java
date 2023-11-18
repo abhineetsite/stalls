@@ -5,12 +5,13 @@ import com.desicabana.stalls.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.apache.commons.io.FilenameUtils;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class EmployeeService {
@@ -58,9 +59,32 @@ public class EmployeeService {
             Files.createDirectories(uploadDir);
         }
 
-        Path filePath = uploadDir.resolve(file.getOriginalFilename());
+        /*
+         * could be used without using the FilenameUtils class
+         */
+        // Additional depenbdency required for FilenameUtils
+        /* <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.8.0</version> <!-- Use the latest version available -->
+        </dependency> */
+        /* String extension = "";
+        int i = originalFilename.lastIndexOf('.');
+        if (i >= 0) {
+           extension = originalFilename.substring(i+1);
+        }
+        String newFilename = UUID.randomUUID().toString() + "." + extension; */
+        
+        // TODO: Check if the file already exists in the uploads directory same file but different name
+        // TODO: to handle any exceptions that may occur during the file upload process, such as file size limit exceeded, file not supported, etc.
+
+        // Generate a unique filename using a UUID
+        String originalFilename = file.getOriginalFilename();
+        String newFilename = UUID.randomUUID().toString() + "." + FilenameUtils.getExtension(originalFilename);
+
+        //Path filePath = uploadDir.resolve(file.getOriginalFilename());
+        Path filePath = uploadDir.resolve(newFilename);
         file.transferTo(filePath);
         return filePath.toString();
-
     }
 }
