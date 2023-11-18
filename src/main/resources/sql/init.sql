@@ -26,3 +26,4 @@ CREATE TABLE employee (
     profile_picture VARCHAR(255),
     resume VARCHAR(255)
 );
+

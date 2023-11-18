@@ -30,6 +30,9 @@ public class Employee {
     @Column(name = "hire_date")
     private Date hireDate;
 
+    //@Column(name = "id")
+
+
     public Employee() {
     }
 

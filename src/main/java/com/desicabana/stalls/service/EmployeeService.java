@@ -4,6 +4,12 @@ import com.desicabana.stalls.model.Employee;
 import com.desicabana.stalls.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -42,5 +48,19 @@ public class EmployeeService {
 
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    public String storeFile(MultipartFile file) throws IOException {
+        // Normalize file name
+        Path uploadDir = Paths.get("./uploads");
+
+        if (!Files.exists(uploadDir)) {
+            Files.createDirectories(uploadDir);
+        }
+
+        Path filePath = uploadDir.resolve(file.getOriginalFilename());
+        file.transferTo(filePath);
+        return filePath.toString();
+
     }
 }
