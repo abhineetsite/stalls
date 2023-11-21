@@ -6,5 +6,8 @@ CREATE TABLE employee (
     hire_date DATE
 );
 
+ALTER TABLE employee
+ADD COLUMN id_proof VARCHAR(255);
+
 
 
