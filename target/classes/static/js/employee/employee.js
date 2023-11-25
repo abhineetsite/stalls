@@ -11,16 +11,14 @@ document.getElementById('employeeForm').addEventListener('submit', function(even
         dateOfBirth: document.getElementById('dateOfBirth').value,
         phone: document.getElementById('phone').value,
         address: document.getElementById('address').value,
-        idProof: document.getElementById('idproof').files[0],
-        password: document.getElementById('password').value,
-        profilePicture: document.getElementById('profilePicture').files[0],
-        resume: document.getElementById('resume').files[0]
+        //password: document.getElementById('password').value
     };
 
     var formData = new FormData();
-    for (var key in employee) {
-        formData.append(key, employee[key]);
-    }
+    formData.append('employee', JSON.stringify(employee)); // Send employee as a JSON string
+    formData.append('idProof', document.getElementById('idProof').files[0]);
+    formData.append('profilePicture', document.getElementById('profilePicture').files[0]);
+    formData.append('resume', document.getElementById('resume').files[0]);
 
     fetch('/api/employee/create', {
         method: 'POST',

@@ -5,7 +5,7 @@ import com.desicabana.stalls.model.FileUploadResponse;
 import com.desicabana.stalls.repository.EmployeeRepository;
 import com.desicabana.stalls.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.desicabana.stalls.model.FileUploadResponse;
+//import com.desicabana.stalls.model.FileUploadResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,7 +56,21 @@ public class EmployeeController {
     }
 
     @PutMapping("/update/{id}")
-    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+    public Employee updateEmployee(@PathVariable Long id,
+            @RequestParam("idProof") MultipartFile idProof,
+            @RequestParam("profilePicture") MultipartFile profilePicture,
+            @RequestParam("resume") MultipartFile resume,
+            @RequestParam("employee") String employeeJson) throws IOException {
+        Employee employee = new ObjectMapper().readValue(employeeJson, Employee.class);
+
+        String idProofPath = employeeService.storeFile(idProof);
+        String profilePicturePath = employeeService.storeFile(profilePicture);
+        String resumePath = employeeService.storeFile(resume);
+
+        employee.setIdProof(idProofPath);
+        employee.setProfilePicture(profilePicturePath);
+        employee.setResume(resumePath);
+
         return employeeService.updateEmployee(id, employee);
     }
 
@@ -69,7 +83,6 @@ public class EmployeeController {
     public ResponseEntity<FileUploadResponse> uploadFile(@RequestParam("file") MultipartFile file) {
 
         FileUploadResponse response = new FileUploadResponse();
-        // File service call logic needs to be added here
         try {
             String filePath = employeeService.storeFile(file); // or fileService.storeFile(file);
             response.setFilePath(filePath);

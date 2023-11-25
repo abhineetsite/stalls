@@ -1,13 +1,6 @@
-
 package com.desicabana.stalls.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -18,34 +11,34 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "middle_name")
     private String middleName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "hire_date")
+    @Column(name = "hire_date", nullable = false)
     private Date hireDate;
 
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private String role;
 
-    @Column(name = "date_of_birth")
+    @Column(name = "date_of_birth", nullable = false)
     private Date dateOfBirth;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "id_proof")
+    @Column(name = "id_proof", nullable = false)
     private String idProof;
 
     @Column(name = "profile_picture")
@@ -54,11 +47,12 @@ public class Employee {
     @Column(name = "resume")
     private String resume;
 
-
     public Employee() {
     }
 
-    public Employee(String firstName, String middleName, String lastName, String email, Date hireDate, String role, Date dateOfBirth, String phone, String address, String idProof) {
+    // Add a constructor with all fields if needed
+    public Employee(String firstName, String middleName, String lastName, String email, Date hireDate, String role,
+            Date dateOfBirth, String phone, String address, String idProof, String profilePicture, String resume) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -69,6 +63,8 @@ public class Employee {
         this.phone = phone;
         this.address = address;
         this.idProof = idProof;
+        this.profilePicture = profilePicture;
+        this.resume = resume;
     }
 
     public Long getId() {
@@ -174,12 +170,25 @@ public class Employee {
     public void setResume(String resume) {
         this.resume = resume;
     }
-
+    
+    //toString() method for debugging purposes
     @Override
     public String toString() {
-        return "Employee{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\''
-                + ", email='" + email + '\'' + ", hireDate=" + hireDate + ", idProof='" + idProof + '\''
-                + ", profilePicture='" + profilePicture + '\'' + ", resume='" + resume + '\'' + '}';
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", hireDate=" + hireDate +
+                ", role='" + role + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", idProof='" + idProof + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
+                ", resume='" + resume + '\'' +
+                '}';
     }
-    
+
 }

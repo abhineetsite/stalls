@@ -39,9 +39,14 @@ public class EmployeeService {
         Employee existingEmployee = employeeRepository.findById(id).orElse(null);
         if (existingEmployee != null) {
             existingEmployee.setFirstName(employee.getFirstName());
+            existingEmployee.setMiddleName(employee.getMiddleName());
             existingEmployee.setLastName(employee.getLastName());
             existingEmployee.setEmail(employee.getEmail());
             existingEmployee.setHireDate(employee.getHireDate());
+            existingEmployee.setRole(employee.getRole());
+            existingEmployee.setDateOfBirth(employee.getDateOfBirth());
+            existingEmployee.setPhone(employee.getPhone());
+            existingEmployee.setAddress(employee.getAddress());
             existingEmployee.setIdProof(employee.getIdProof());
             existingEmployee.setProfilePicture(employee.getProfilePicture());
             existingEmployee.setResume(employee.getResume());
