@@ -4,6 +4,7 @@ import com.desicabana.stalls.model.Employee;
 import com.desicabana.stalls.model.FileUploadResponse;
 import com.desicabana.stalls.repository.EmployeeRepository;
 import com.desicabana.stalls.service.EmployeeService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.desicabana.stalls.model.FileUploadResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -35,7 +38,20 @@ public class EmployeeController {
     }
 
     @PostMapping("/create")
-    public Employee createEmployee(@RequestBody Employee employee) {
+    public Employee createEmployee(@RequestParam("idProof") MultipartFile idProof,
+            @RequestParam("profilePicture") MultipartFile profilePicture,
+            @RequestParam("resume") MultipartFile resume,
+            @RequestParam("employee") String employeeJson) throws IOException {
+        Employee employee = new ObjectMapper().readValue(employeeJson, Employee.class);
+
+        String idProofPath = employeeService.storeFile(idProof);
+        String profilePicturePath = employeeService.storeFile(profilePicture);
+        String resumePath = employeeService.storeFile(resume);
+
+        employee.setIdProof(idProofPath);
+        employee.setProfilePicture(profilePicturePath);
+        employee.setResume(resumePath);
+
         return employeeService.createEmployee(employee);
     }
 
@@ -48,19 +64,19 @@ public class EmployeeController {
     public void deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
     }
-    
+
     @PostMapping("/upload")
     public ResponseEntity<FileUploadResponse> uploadFile(@RequestParam("file") MultipartFile file) {
 
         FileUploadResponse response = new FileUploadResponse();
-        //File service call logic needs to be added here
-        try{
+        // File service call logic needs to be added here
+        try {
             String filePath = employeeService.storeFile(file); // or fileService.storeFile(file);
             response.setFilePath(filePath);
             response.setStatus("success");
             response.setMessage("File uploaded successfully");
             return ResponseEntity.ok(response);
-        }catch(Exception e){
+        } catch (Exception e) {
             response.setStatus("failure");
             response.setMessage("Could not upload the file: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
@@ -68,4 +84,3 @@ public class EmployeeController {
     }
 
 }
-

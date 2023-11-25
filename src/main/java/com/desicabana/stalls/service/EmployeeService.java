@@ -42,6 +42,9 @@ public class EmployeeService {
             existingEmployee.setLastName(employee.getLastName());
             existingEmployee.setEmail(employee.getEmail());
             existingEmployee.setHireDate(employee.getHireDate());
+            existingEmployee.setIdProof(employee.getIdProof());
+            existingEmployee.setProfilePicture(employee.getProfilePicture());
+            existingEmployee.setResume(employee.getResume());
             return employeeRepository.save(existingEmployee);
         }
         return null;
