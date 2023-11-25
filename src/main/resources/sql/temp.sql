@@ -8,13 +8,16 @@
 
 CREATE TABLE employee (
     id SERIAL PRIMARY KEY,
-    first_name VARCHAR(255),
-    last_name VARCHAR(255),
-    email VARCHAR(255),
-    hire_date DATE,
-    phone VARCHAR(20),
-    address TEXT,
-    id_proof VARCHAR(255),
+    first_name VARCHAR(255) NOT NULL,
+    middle_name VARCHAR(255),
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    hire_date DATE NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL,
+    id_proof VARCHAR(255) NOT NULL,
     profile_picture VARCHAR(255),
     resume VARCHAR(255)
 );
