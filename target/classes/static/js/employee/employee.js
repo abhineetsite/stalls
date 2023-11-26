@@ -27,6 +27,15 @@ document.getElementById('employeeForm').addEventListener('submit', function(even
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
+        var successAlert = document.getElementById('successAlert');
+        const employeeForm = document.getElementById('employeeForm');
+        successAlert.hidden = false;
+        successAlert.classList.add('show'); // Show the alert
+        employeeForm.reset(); // Clear all form data
+        employeeForm.style.display = 'none'; // Hide the form
+        /* setTimeout(function() {
+            successAlert.classList.remove('show');
+        }, 5000); // Hide the alert after 5 seconds */
     })
     .catch((error) => {
         console.error('Error:', error);

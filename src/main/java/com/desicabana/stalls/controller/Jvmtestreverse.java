@@ -3,7 +3,7 @@ package com.desicabana.stalls.controller;
 import java.util.Arrays;
 
 // A class to demonstrate reversing a string, array, sentence, and paragraph
-public class Reverse {
+public class Jvmtestreverse {
     public static void main(String[] args) {
         // Reverse a string
         String str = "Hello World";

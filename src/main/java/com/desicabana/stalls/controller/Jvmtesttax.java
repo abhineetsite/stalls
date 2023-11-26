@@ -2,7 +2,7 @@ package com.desicabana.stalls.controller;
 
 import java.util.Scanner;
 
-public class Tax {
+public class Jvmtesttax {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 

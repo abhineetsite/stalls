@@ -19,6 +19,22 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <h1 class="text-center mb-4">Employee Registration</h1>
+                        
+                        <!--Registration success message-->
+                        <div id="successAlert" class="alert alert-success alert-dismissible fade" role="alert" hidden>
+                            Employee profile created. Please wait for the admin to approve your profile.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div><!--Registration success message ends-->
+
+                        <!--Registration error message-->
+                        <div id="errorAlert" class="alert alert-danger alert-dismissible fade" role="alert" hidden>
+                            <span id="errorMessage">Errors creating profile. Please try again later.</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" id="closeError">&times;</span>
+                            </button>
+                        </div><!--Registration error message ends-->
 
                         <form id="employeeForm">
                             <div class="form-group">
