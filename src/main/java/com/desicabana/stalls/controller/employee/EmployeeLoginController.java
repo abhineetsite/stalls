@@ -1,4 +1,4 @@
-package com.desicabana.stalls.controller;
+package com.desicabana.stalls.controller.employee;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

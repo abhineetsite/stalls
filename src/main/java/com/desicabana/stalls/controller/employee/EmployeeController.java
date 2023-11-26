@@ -1,15 +1,13 @@
-package com.desicabana.stalls.controller;
+package com.desicabana.stalls.controller.employee;
 
 import com.desicabana.stalls.model.Employee;
 import com.desicabana.stalls.model.FileUploadResponse;
 import com.desicabana.stalls.repository.EmployeeRepository;
 import com.desicabana.stalls.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.desicabana.stalls.model.FileUploadResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -78,7 +76,8 @@ public class EmployeeController {
     public void deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
     }
-
+    
+    // future use
     @PostMapping("/upload")
     public ResponseEntity<FileUploadResponse> uploadFile(@RequestParam("file") MultipartFile file) {
 
