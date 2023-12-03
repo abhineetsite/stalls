@@ -1,9 +1,8 @@
 package com.desicabana.stalls.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -12,53 +11,24 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private String role;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_role",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
 
-    /*
-     * public User(String username, String password, String role) {
-     * this.username = username;
-     * this.password = "{noop}" + password;
-     * this.role = role;
-     * }
-     */
-
-    public User(Long id, String username, String password, String role) {
+    public User(Long id, String username, String password, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.password = "{noop}" + password;
-        this.role = role;
+        this.roles = roles;
     }
-
-    /*
-     * public User(Long id, String username, String password) {
-     * this.id = id;
-     * this.username = username;
-     * this.password = "{noop}" + password;
-     * this.role = "ROLE_USER";
-     * }
-     * 
-     * public User(String username, String password) {
-     * this.username = username;
-     * this.password = "{noop}" + password;
-     * this.role = "ROLE_USER";
-     * }
-     * 
-     * public User(Long id) {
-     * this.id = id;
-     * }
-     * 
-     * public User(Long id, String role) {
-     * this.id = id;
-     * this.role = role;
-     * }
-     * 
-     * public User(String username) {
-     * this.username = username;
-     * }
-     */
 
     public Long getId() {
         return id;
@@ -84,16 +54,16 @@ public class User {
         this.password = "{noop}" + password;
     }
 
-    public String getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", password=" + password + ", role=" + role + ", username=" + username + "]";
+        return "User [id=" + id + ", password=" + password + ", roles=" + roles + ", username=" + username + "]";
     }
 }
