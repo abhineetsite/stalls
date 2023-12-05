@@ -44,12 +44,13 @@ public class SecurityConfig {
                 .authorizeRequests(authorize -> authorize
                         .anyRequest().authenticated())
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/profile", true)
+                .loginPage("/employee/login")
+                .defaultSuccessUrl("/employee/profile", true)
+                .failureUrl("/employee/loginError") // Add this line
                 .permitAll()
                 .and() // Add this line to chain the logout() method
                 .logout()
-                .logoutSuccessUrl("/login?logout") // Use logoutSuccessUrl() instead of logoutSuccessURL()
+                .logoutSuccessUrl("/employee/login?logout") // Use logoutSuccessUrl() instead of logoutSuccessURL()
                 .permitAll();
         return http.build();
     }

@@ -28,7 +28,6 @@ public class Role {
         return name;
     }
 
-    //Generate toString()...
     @Override
     public String toString() {
         return "Role{" +
