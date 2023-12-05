@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
@@ -47,12 +47,14 @@ public class Employee {
     @Column(name = "resume")
     private String resume;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     public Employee() {
     }
 
-    // Add a constructor with all fields if needed
-    public Employee(String firstName, String middleName, String lastName, String email, Date hireDate, String role,
-            Date dateOfBirth, String phone, String address, String idProof, String profilePicture, String resume) {
+    public Employee(String firstName, String middleName, String lastName, String email, Date hireDate, String role, Date dateOfBirth, String phone, String address, String idProof, String profilePicture, String resume, User user) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -65,6 +67,7 @@ public class Employee {
         this.idProof = idProof;
         this.profilePicture = profilePicture;
         this.resume = resume;
+        this.user = user;
     }
 
     public Long getId() {
@@ -170,25 +173,24 @@ public class Employee {
     public void setResume(String resume) {
         this.resume = resume;
     }
-    
-    //toString() method for debugging purposes
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", hireDate=" + hireDate +
-                ", role='" + role + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", idProof='" + idProof + '\'' +
-                ", profilePicture='" + profilePicture + '\'' +
-                ", resume='" + resume + '\'' +
-                '}';
+
+    public User getUser() {
+        return user;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
+
+
+
+
+
+
+
+
+
 
 }

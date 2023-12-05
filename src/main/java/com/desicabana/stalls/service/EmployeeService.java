@@ -2,10 +2,12 @@ package com.desicabana.stalls.service;
 
 import com.desicabana.stalls.model.Employee;
 import com.desicabana.stalls.repository.EmployeeRepository;
+
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.apache.commons.io.FilenameUtils;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,12 +18,8 @@ import java.util.UUID;
 @Service
 public class EmployeeService {
 
-    private final EmployeeRepository employeeRepository;
-
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
+    private EmployeeRepository employeeRepository;
 
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
@@ -35,22 +33,23 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public Employee updateEmployee(Long id, Employee employee) {
-        Employee existingEmployee = employeeRepository.findById(id).orElse(null);
-        if (existingEmployee != null) {
-            existingEmployee.setFirstName(employee.getFirstName());
-            existingEmployee.setMiddleName(employee.getMiddleName());
-            existingEmployee.setLastName(employee.getLastName());
-            existingEmployee.setEmail(employee.getEmail());
-            existingEmployee.setHireDate(employee.getHireDate());
-            existingEmployee.setRole(employee.getRole());
-            existingEmployee.setDateOfBirth(employee.getDateOfBirth());
-            existingEmployee.setPhone(employee.getPhone());
-            existingEmployee.setAddress(employee.getAddress());
-            existingEmployee.setIdProof(employee.getIdProof());
-            existingEmployee.setProfilePicture(employee.getProfilePicture());
-            existingEmployee.setResume(employee.getResume());
-            return employeeRepository.save(existingEmployee);
+    public Employee updateEmployee(Long id, Employee employeeDetails) {
+        Employee employee = employeeRepository.findById(id).orElse(null);
+        if (employee != null) {
+            employee.setFirstName(employeeDetails.getFirstName());
+            employee.setMiddleName(employeeDetails.getMiddleName());
+            employee.setLastName(employeeDetails.getLastName());
+            employee.setEmail(employeeDetails.getEmail());
+            employee.setHireDate(employeeDetails.getHireDate());
+            employee.setRole(employeeDetails.getRole());
+            employee.setDateOfBirth(employeeDetails.getDateOfBirth());
+            employee.setPhone(employeeDetails.getPhone());
+            employee.setAddress(employeeDetails.getAddress());
+            employee.setIdProof(employeeDetails.getIdProof());
+            employee.setProfilePicture(employeeDetails.getProfilePicture());
+            employee.setResume(employeeDetails.getResume());
+            employee.setUser(employeeDetails.getUser());
+            return employeeRepository.save(employee);
         }
         return null;
     }
