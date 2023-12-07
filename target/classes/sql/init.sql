@@ -6,7 +6,7 @@
 
 --Postgres
 
--- Employee table
+-- Employee table //DONE
 CREATE TABLE employee (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
@@ -21,8 +21,10 @@ CREATE TABLE employee (
     id_proof VARCHAR(255) NOT NULL,
     profile_picture VARCHAR(255),
     resume VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES user (id)
+    app_user_id INT,  -- Add this line
+    FOREIGN KEY (app_user_id) REFERENCES app_user (id)
 );
+
 
 -- Customer table
 /* CREATE TABLE customer (
@@ -37,8 +39,8 @@ CREATE TABLE employee (
     FOREIGN KEY (user_id) REFERENCES user (id)
 ); */
 
--- User table
-CREATE TABLE user (
+-- User table //DONE
+CREATE TABLE app_user (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -46,22 +48,22 @@ CREATE TABLE user (
     --FOREIGN KEY (employee_id) REFERENCES employee (id)
 );
 
--- Indexes
+-- Indexes //TO DO...
 -- User
-CREATE INDEX idx_user_username ON user (username);
+CREATE INDEX idx_user_username ON app_user (username);
 
--- role table
+-- role table //DONE BUT REFACTOR TO app_role
 CREATE TABLE role (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
 
--- user_role table
+-- user_role table //DONE BUT REFACTOR TO app_user, app_role
 CREATE TABLE user_role (
-    user_id INT NOT NULL,
+    app_user_id INT NOT NULL,
     role_id INT NOT NULL,
-    PRIMARY KEY (user_id, role_id),
-    FOREIGN KEY (user_id) REFERENCES user (id),
+    PRIMARY KEY (app_user_id, role_id),
+    FOREIGN KEY (app_user_id) REFERENCES app_user (id),
     FOREIGN KEY (role_id) REFERENCES role (id)
 );
 
