@@ -4,7 +4,7 @@
 <head>
     <title>DesiCabana Employee Portal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/employee/employee.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/employee/employee.css"> -->
 </head>
 
 <body>
@@ -18,12 +18,12 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <h1 class="text-center mb-4">Employee Login</h1>
-                        <form action="/action_page.php">
+                        <form action="/employee/login" method="post">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                     </div>
-                                    <input type="username" class="form-control" placeholder="username" name="username"
+                                    <input type="text" class="form-control" placeholder="username" name="username"
                                         required />
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                     </div>
-                                    <input type="password" class="form-control" placeholder="Enter Password" name="psw"
+                                    <input type="password" class="form-control" placeholder="Enter Password" name="password"
                                         required />
                                 </div>
                             </div>

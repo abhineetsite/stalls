@@ -1,9 +1,12 @@
-com/desicabana/stalls/controller/employee/EmployeeRegistrationController.class
+com/desicabana/stalls/controller/employee/RegistrationController.class
 com/desicabana/stalls/controller/HomeController.class
 com/desicabana/stalls/model/Employee.class
 com/desicabana/stalls/config/SecurityConfig.class
 com/desicabana/stalls/model/User.class
+com/desicabana/stalls/repository/RoleRepository.class
 com/desicabana/stalls/service/EmployeeService.class
+com/desicabana/stalls/model/Role.class
+com/desicabana/stalls/controller/employee/LoginController.class
 com/desicabana/stalls/model/FileUploadResponse.class
 com/desicabana/stalls/controller/employee/EmployeeController.class
 com/desicabana/stalls/controller/employee/ProfileController.class
@@ -11,6 +14,6 @@ com/desicabana/stalls/service/UserDetailsServiceImpl.class
 com/desicabana/stalls/repository/EmployeeRepository.class
 com/desicabana/stalls/controller/Jvmtesttax.class
 com/desicabana/stalls/controller/Jvmtestreverse.class
+com/desicabana/stalls/model/UserRole.class
 com/desicabana/stalls/repository/UserRepository.class
-com/desicabana/stalls/controller/employee/EmployeeLoginController.class
 com/desicabana/stalls/StallsApplication.class
