@@ -1,5 +1,6 @@
 com/desicabana/stalls/repository/UserRoleRepository.class
 com/desicabana/stalls/controller/employee/RegistrationController.class
+com/desicabana/stalls/manualTest/PasswordEncoder.class
 com/desicabana/stalls/controller/HomeController.class
 com/desicabana/stalls/model/Employee.class
 com/desicabana/stalls/config/SecurityConfig.class
