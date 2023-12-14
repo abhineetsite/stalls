@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ProfileController {
     @GetMapping("/employee/employeeProfile")
     public String showRegistrationPage() {
-        return "employeePortal/employeeProfile";
+        return "employeePortal/profile";
     }
 }
 // Compare this snippet from src/main/java/com/desicabana/stalls/controller/employee/ProfileController.java:

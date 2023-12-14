@@ -45,7 +45,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated())
                 .formLogin()
                 .loginPage("/employee/login")
-                .defaultSuccessUrl("/employee/profile", true)
+                .defaultSuccessUrl("/employee/employeeProfile", true)
                 .failureUrl("/employee/loginError") // Add this line
                 .permitAll()
                 .and() // Add this line to chain the logout() method
