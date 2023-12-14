@@ -3,7 +3,9 @@
 /Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/model/FileUploadResponse.java
 /Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/model/Employee.java
 /Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/model/Role.java
+/Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/repository/UserRoleRepository.java
 /Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/controller/employee/LoginController.java
+/Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/model/user_id.java
 /Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/model/User.java
 /Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/service/UserDetailsServiceImpl.java
 /Users/abhineetswain/Documents/GitHub/stalls/src/main/java/com/desicabana/stalls/repository/UserRepository.java

@@ -60,10 +60,10 @@ CREATE TABLE role (
 
 -- user_role table //DONE BUT REFACTOR TO app_user, app_role
 CREATE TABLE user_role (
-    app_user_id INT NOT NULL,
+    user_id INT NOT NULL,
     role_id INT NOT NULL,
-    PRIMARY KEY (app_user_id, role_id),
-    FOREIGN KEY (app_user_id) REFERENCES app_user (id),
+    PRIMARY KEY (user_id, role_id),
+    FOREIGN KEY (user_id) REFERENCES app_user (id),
     FOREIGN KEY (role_id) REFERENCES role (id)
 );
 
